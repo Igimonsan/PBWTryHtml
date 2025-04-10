@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Custom Video Player</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .container {
+      height: 100vh;
+      width: 100vw;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+    }
+
+    .video-wrapper {
+      scroll-snap-align: start;
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    video {
+      max-width: 100vw;
+      max-height: 100vh;
+      object-fit: contain;
+      background: #000;
+    }
+
+    .btn-group {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+    }
+
+    .btn-control {
+      padding: 8px 14px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Semua video di bawah ini sudah sesuai link yang kamu berikan -->
+    <!-- Tinggal copy-paste struktur ini kalau kamu mau tambah -->
+
+    <!-- Video 1 -->
+    <div class="video-wrapper">
+      <video id="vid1" loop playsinline>
+        <source src="https://github.com/Igimonsan/Image/raw/refs/heads/main/ssstik.io_1737271314313.mp4" type="video/mp4">
+      </video>
+      <div class="btn-group">
+        <button class="btn-control" onclick="togglePlay('vid1', this)">Play</button>
+        <button class="btn-control" onclick="toggleSound('vid1', this)">Mute</button>
+      </div>
+    </div>
+
+    <!-- Video 2 -->
+    <div class="video-wrapper">
+      <video id="vid2" loop playsinline>
+        <source src="https://github.com/Igimonsan/Image/raw/refs/heads/main/ssstik.io_@theamirhanio_1738569706525.mp4" type="video/mp4">
+      </video>
+      <div class="btn-group">
+        <button class="btn-control" onclick="togglePlay('vid2', this)">Play</button>
+        <button class="btn-control" onclick="toggleSound('vid2', this)">Mute</button>
+      </div>
+    </div>
+
+    <!-- Video 3 -->
+    <div class="video-wrapper">
+      <video id="vid3" loop playsinline>
+        <source src="https://github.com/Igimonsan/Image/raw/refs/heads/main/ssstik.io_@iam_young222_1732899817409.mp4" type="video/mp4">
+      </video>
+      <div class="btn-group">
+        <button class="btn-control" onclick="togglePlay('vid3', this)">Play</button>
+        <button class="btn-control" onclick="toggleSound('vid3', this)">Mute</button>
+      </div>
+    </div>
+
+    <!-- Video 4 -->
+    <div class="video-wrapper">
+      <video id="vid4" loop playsinline>
+        <source src="https://github.com/Igimonsan/Image/raw/refs/heads/main/ssstik.io_@no.zuhaa_1740758496346.mp4" type="video/mp4">
+      </video>
+      <div class="btn-group">
+        <button class="btn-control" onclick="togglePlay('vid4', this)">Play</button>
+        <button class="btn-control" onclick="toggleSound('vid4', this)">Mute</button>
+      </div>
+    </div>
+
+    <!-- Video 5 -->
+    <div class="video-wrapper">
+      <video id="vid5" loop playsinline>
+        <source src="https://github.com/Igimonsan/Image/raw/refs/heads/main/ssstik.io_@watashi_yuu_1740319276939.mp4" type="video/mp4">
+      </video>
+      <div class="btn-group">
+        <button class="btn-control" onclick="togglePlay('vid5', this)">Play</button>
+        <button class="btn-control" onclick="toggleSound('vid5', this)">Mute</button>
+      </div>
+    </div>
+
+    <!-- Video 6 -->
+    <div class="video-wrapper">
+      <video id="vid6" loop playsinline>
+        <source src="https://github.com/Igimonsan/Image/raw/refs/heads/main/ssstik.io_@noonayuna__1741612958676.mp4" type="video/mp4">
+      </video>
+      <div class="btn-group">
+        <button class="btn-control" onclick="togglePlay('vid6', this)">Play</button>
+        <button class="btn-control" onclick="toggleSound('vid6', this)">Mute</button>
+      </div>
+    </div>
+
+    <!-- Video 7 -->
+    <div class="video-wrapper">
+      <video id="vid7" loop playsinline>
+        <source src="https://github.com/Igimonsan/Image/raw/refs/heads/main/ssstik.io_@jesse.fd3_1742270434558.mp4" type="video/mp4">
+      </video>
+      <div class="btn-group">
+        <button class="btn-control" onclick="togglePlay('vid7', this)">Play</button>
+        <button class="btn-control" onclick="toggleSound('vid7', this)">Mute</button>
+      </div>
+    </div>
+
+    <!-- Video 8 -->
+    <div class="video-wrapper">
+      <video id="vid8" loop playsinline>
+        <source src="https://github.com/Igimonsan/Image/raw/refs/heads/main/ssstik.io_@aklenaturu_1742934626919.mp4" type="video/mp4">
+      </video>
+      <div class="btn-group">
+        <button class="btn-control" onclick="togglePlay('vid8', this)">Play</button>
+        <button class="btn-control" onclick="toggleSound('vid8', this)">Mute</button>
+      </div>
+    </div>
+
+    <!-- Video 9 -->
+    <div class="video-wrapper">
+      <video id="vid9" loop playsinline>
+        <source src="https://github.com/Igimonsan/Image/raw/refs/heads/main/ssstik.io_@koyukii.__1743181961672.mp4" type="video/mp4">
+      </video>
+      <div class="btn-group">
+        <button class="btn-control" onclick="togglePlay('vid9', this)">Play</button>
+        <button class="btn-control" onclick="toggleSound('vid9', this)">Mute</button>
+      </div>
+    </div>
+
+    <!-- Video 10 -->
+    <div class="video-wrapper">
+      <video id="vid10" loop playsinline>
+        <source src="https://github.com/Igimonsan/Image/raw/refs/heads/main/ssstik.io_@lawack21_1743808270932.mp4" type="video/mp4">
+      </video>
+      <div class="btn-group">
+        <button class="btn-control" onclick="togglePlay('vid10', this)">Play</button>
+        <button class="btn-control" onclick="toggleSound('vid10', this)">Mute</button>
+      </div>
+    </div>
+
+    <!-- Video 11 -->
+    <div class="video-wrapper">
+      <video id="vid11" loop playsinline>
+        <source src="https://github.com/Igimonsan/Image/raw/refs/heads/main/ssstik.io_@aviedits0_1744116593492.mp4" type="video/mp4">
+      </video>
+      <div class="btn-group">
+        <button class="btn-control" onclick="togglePlay('vid11', this)">Play</button>
+        <button class="btn-control" onclick="toggleSound('vid11', this)">Mute</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function togglePlay(videoId, btn) {
+      const video = document.getElementById(videoId);
+      if (video.paused) {
+        video.play();
+        btn.textContent = "Pause";
+      } else {
+        video.pause();
+        btn.textContent = "Play";
+      }
+    }
+
+    function toggleSound(videoId, btn) {
+      const video = document.getElementById(videoId);
+      video.muted = !video.muted;
+      btn.textContent = video.muted ? "Unmute" : "Mute";
+    }
+  </script>
+</body>
+</html>
