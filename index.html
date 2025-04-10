@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Custom Video Player</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+      font-family: sans-serif;
+    }
+
+    .container {
+      height: 100vh;
+      width: 100vw;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+    }
+
+    .video-wrapper {
+      scroll-snap-align: start;
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    video {
+      max-width: 100vw;
+      max-height: 100vh;
+      object-fit: contain;
+      background: #000;
+    }
+
+    .btn-group {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      gap: 20px;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 12px 20px;
+      border-radius: 10px;
+      opacity: 0;
+      transition: 0.3s ease;
+    }
+
+    .btn-group.show {
+      opacity: 1;
+    }
+
+    .btn-icon {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: white;
+      font-size: 28px;
+    }
+
+    svg {
+      width: 28px;
+      height: 28px;
+      fill: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="container"></div>
+
+  <script>
+    const videos = [
+      "ssstik.io_1737271314313.mp4",
+      "ssstik.io_@theamirhanio_1738569706525.mp4",
+      "ssstik.io_@iam_young222_1732899817409.mp4",
+      "ssstik.io_@no.zuhaa_1740758496346.mp4",
+      "ssstik.io_@watashi_yuu_1740319276939.mp4",
+      "ssstik.io_@noonayuna__1741612958676.mp4",
+      "ssstik.io_@jesse.fd3_1742270434558.mp4",
+      "ssstik.io_@aklenaturu_1742934626919.mp4",
+      "ssstik.io_@koyukii.__1743181961672.mp4",
+      "ssstik.io_@lawack21_1743808270932.mp4",
+      "ssstik.io_@aviedits0_1744116593492.mp4"
+    ];
+
+    const container = document.querySelector(".container");
+
+    videos.forEach((filename, i) => {
+      const videoId = `vid${i + 1}`;
+      const wrapper = document.createElement("div");
+      wrapper.className = "video-wrapper";
+
+      wrapper.innerHTML = `
+        <video id="${videoId}" loop playsinline muted>
+          <source src="https://github.com/Igimonsan/Image/raw/refs/heads/main/${filename}" type="video/mp4">
+        </video>
+
+        <div class="btn-group" id="btn-${videoId}">
+          <button class="btn-icon" onclick="togglePlay('${videoId}', this)">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <button class="btn-icon" onclick="toggleSound('${videoId}', this)">
+            <svg viewBox="0 0 24 24"><path d="M5 9v6h4l5 5V4L9 9H5z"/></svg>
+          </button>
+        </div>
+      `;
+
+      wrapper.addEventListener("click", () => {
+        const btnGroup = wrapper.querySelector(".btn-group");
+        btnGroup.classList.add("show");
+      });
+
+      container.appendChild(wrapper);
+    });
+
+    function togglePlay(videoId, btn) {
+      const video = document.getElementById(videoId);
+      const icon = btn.querySelector("svg path");
+
+      if (video.paused) {
+        video.play();
+        icon.setAttribute("d", "M6 19h4V5H6v14zm8-14v14h4V5h-4z"); // pause
+      } else {
+        video.pause();
+        icon.setAttribute("d", "M8 5v14l11-7z"); // play
+      }
+    }
+
+    function toggleSound(videoId, btn) {
+      const video = document.getElementById(videoId);
+      const icon = btn.querySelector("svg path");
+
+      video.muted = !video.muted;
+      icon.setAttribute("d", video.muted
+        ? "M5 9v6h4l5 5V4L9 9H5z"  // mute
+        : "M3 10v4h4l5 5V5L7 10H3z" // unmute
+      );
+    }
+  </script>
+</body>
+</html>
